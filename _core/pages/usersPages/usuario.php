@@ -59,7 +59,7 @@ if(isset($logins[$key]) || $acao == 'add'){
             <label for="senha">Senha:</label>
             <input type="text" name="senha" id="senha" value="<?= $senha ?>" placeholder="Digite sua senha..." required>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">SALVAR ALTERAÇÕES</button>
+        <button type="submit" class="btn btn-primary my-btn-primary btn-lg">SALVAR ALTERAÇÕES</button>
     </form>
 </main>
 <?php }

@@ -47,7 +47,7 @@ if(isset($logins[$key]) || $acao == 'add'){
             <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="Digite seu nome..." value="<?= $nome ?>" required>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg">SALVAR ALTERAÇÕES</button>
+        <button type="submit" class="btn btn-primary my-btn-primary btn-lg">SALVAR ALTERAÇÕES</button>
     </form>
 </main>
 <?php }

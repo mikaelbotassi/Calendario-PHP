@@ -6,7 +6,7 @@
             <li><a href="index.php?p=home">Calendário</a></li>
             <li><a href="index.php?p=usuarios">Usuários</a></li>
             <li><a href="index.php?p=grupoList">Grupos</a></li>
-            <li><a href="index.php?p=logof" class="btn btn-primary btn-md">Sair <span class='material-icons'>logout</span></a></li>
+            <li><a href="index.php?p=logof" class="btn btn-primary my-btn-primary btn-md">Sair <span class='material-icons'>logout</span></a></li>
         </ul>
     </nav>
 </header>

@@ -22,12 +22,12 @@
 
     <main id="home">
         <?php
-        echo '<div id="botoes-ant-prox"><a href="./index.php?year='.($year - 1).'" class="btn btn-secondary btn-sm"> <span class="material-icons">arrow_left</span> '.($year - 1).'</a>';
-        echo '<a href="./index.php?year='.($year + 1).'" class="btn btn-secondary btn-sm">'.($year + 1).' <span class="material-icons">arrow_right</span> </a></div>';
+        echo '<div id="botoes-ant-prox"><a href="./index.php?year='.($year - 1).'" class="btn btn-secondary my-btn-secondary btn-lg"> <span class="material-icons">arrow_left</span> '.($year - 1).'</a>';
+        echo '<a href="./index.php?year='.($year + 1).'" class="btn btn-secondary my-btn-secondary btn-lg">'.($year + 1).' <span class="material-icons">arrow_right</span> </a></div>';
         
         ?>
             
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertDataModal"> CADASTRAR EVENTO <span class='material-icons'>add_circle</span> </button>
+        <button type="button" class="btn btn-primary my-btn-primary" data-bs-toggle="modal" data-bs-target="#insertDataModal"> CADASTRAR EVENTO <span class='material-icons'>add_circle</span> </button>
         <?php
         
         echo "<h1>Bem vindo {$_SESSION['nome']}</h1><a href='index.php?p=logof'></a>";
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label for="nome">Nome:</label>
-                                <input type="text" name="nome" class="form-control" required/>
+                                <input type="text" name="nome" class="form-control" placeholder="Seu nome..." required/>
                             </div>
                             <div class="col-sm-4">
                                 <label for="dia">Dia:</label>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="Submit" class="btn btn-primary btn-success">Salvar</button>
+                        <button type="Submit" class="btn btn-primary my-btn-primary btn-success">Salvar</button>
                     </div>
                 </form>
             </div>

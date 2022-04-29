@@ -6,9 +6,9 @@
         }
     }
 ?>
-<main class="d-flex flex-column justify-content-xl-evenly align-items-center">
+<main class="d-flex flex-column align-items-center">
     <h2>GRUPOS</h2>
-    <button type="button" class="btn btn-primary btn-lg d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#insertGroupModal"> INSERIR <span class='material-icons' style="font-size:16px">add_circle</span> </button>
+    <button type="button" class="btn  btn-primary my-btn-primary btn-lg d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#insertGroupModal"> INSERIR <span class='material-icons' style="font-size:16px">add_circle</span> </button>
     <section class="d-flex w-100 gap-3 justify-content-center p-2">
         <?php
             $groups = loadGroups();
@@ -17,8 +17,10 @@
         <article class="card w-10" style="width: 18rem;">
             <div class="card-body">
                 <h3 class="card-title"><?=$group?></h3>
-                <button class="btn btn-primary col-sm-4">EDITAR</button>
-                <button class="btn btn-secondary bg-danger col-sm-4">EXCLUIR</button>
+                <div class="d-flex gap-2">
+                  <button class="btn  btn-primary my-btn-primary col-sm-4">EDITAR</button>
+                  <button class="btn btn-secondary my-btn-secondary bg-danger col-sm-4">EXCLUIR</button>
+                </div>
             </div>
         </article>
         <?php } ?>
@@ -39,8 +41,8 @@
             <input type="text" class="form-control" name="nome" id="nomeGroup" placeholder="Digite o nome do grupo...">
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary bg-danger" data-bs-dismiss="modal">CANCELAR</button>
-            <button type="submit" class="btn btn-primary col-sm-2 col-md-2 col-lg-4 col-xl-6">SALVAR</button>
+            <button type="button" class="btn btn-secondary my-btn-secondary bg-danger" data-bs-dismiss="modal">CANCELAR</button>
+            <button type="submit" class="btn btn-primary my-btn-primary col-sm-2 col-md-2 col-lg-4 col-xl-6">SALVAR</button>
         </div>
       </form>
     </div>
