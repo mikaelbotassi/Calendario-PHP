@@ -17,6 +17,8 @@ $CONFIG = [
         '404' => "defaultPages/404.php",
         'home' => "defaultPages/home.php",
         "login" => "defaultPages/login.php",
-        'grupoList' => 'groupsPages/grupoList.php'
+        'grupoList' => 'groupsPages/grupoList.php',
+        'grupoForm' => 'groupsPages/grupoForm.php',
+        'delGroup' => 'groupsPages/delGroup.php'
         ]
 ];

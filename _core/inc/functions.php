@@ -107,34 +107,12 @@ function showToastr($msg){
     }
 }
 
-function insertGroup($group){
-    global $CONFIG;
-
-    $fileSequence = $CONFIG['fileSequenceGroupPath'];
-    // Abre o arquivo para obter o conteúdo existente
-    $id = file_get_contents($fileSequence);
-    $id = ((int)$id) + 1;
-    // Escreve o conteúdo de volta no arquivo
-    file_put_contents($fileSequence, $id);
-
-    $fileGroups = fopen($CONFIG['fileGroupsPath'], 'a+');
-    fwrite($fileGroups, $id.';'.$group.PHP_EOL);
-    fclose($fileGroups);
-}
-
-function loadGroups(){
-    global $CONFIG;
-    $arq = fopen($CONFIG['fileGroupsPath'], 'r+');
-
-    $groups = [];
-
-    while($row=fgetcsv($arq,1024,";")){
-        if($row[0] != "" && $row[1] != ""){
-            $groups += [$row[0]=>$row[1]];
-        }
-    }
-
-    fclose($arq);
-
-    return $groups;
+function connectDB(){
+    return mysqli_connect(
+        "localhost",
+        "root",
+        "",
+        "estudo",
+        "3306"
+    );
 }

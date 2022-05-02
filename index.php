@@ -4,7 +4,7 @@
 
 
     function showPage($page){
-        global $CONFIG;
+        global $CONFIG, $con;
 
         $fp = isset($CONFIG['directories'][$page]) ? PAGES_PATH."{$CONFIG['directories'][$page]}" : PAGES_PATH."{$CONFIG['directories']['404']}";
 
@@ -12,6 +12,9 @@
     }
 
     include_once __DIR__."/_core/inc/functions.php";
+
+    $con = connectDB();
+
     $p = isset($_GET['p']) ? $_GET['p'] : "home";
     if($p == 'logof'){
         $_SESSION['logado'] = false;
