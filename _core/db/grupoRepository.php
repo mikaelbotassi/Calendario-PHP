@@ -1,6 +1,11 @@
 <?php
 
-function getGroups($connection){
+include_once __DIR__."/conexao.php";
+
+function getGroups(){
+
+    $connection = connectDB();
+
     $query = "SELECT * FROM GRUPO";
     $array = [];
 
@@ -14,7 +19,9 @@ function getGroups($connection){
     return $array;
 }
 
-function getGroup($connection, $id){
+function getGroup($id){
+
+    $connection = connectDB();
 
     $id=(int)$id+0;
 
@@ -30,7 +37,9 @@ function getGroup($connection, $id){
 
 }
 
-function insertGroup($connection, $group){
+function insertGroup($group){
+
+    $connection = connectDB();
 
     $query = "INSERT INTO GRUPO(NOME) VALUES ('{$group['nome']}')";
 
@@ -38,7 +47,9 @@ function insertGroup($connection, $group){
 
 }
 
-function updateGroup($connection, $group){
+function updateGroup($group){
+
+    $connection = connectDB();
 
     $query = "UPDATE GRUPO
     SET NOME = '{$group['nome']}'
@@ -48,7 +59,9 @@ function updateGroup($connection, $group){
 
 }
 
-function deleteGroup($connection, $id){
+function deleteGroup($id){
+
+    $connection = connectDB();
 
     $query = "DELETE FROM GRUPO WHERE ID = {$id}";
 

@@ -1,12 +1,12 @@
 <?php
   include __DIR__."/../../db/grupoRepository.php";
 ?>
-<main class="d-flex flex-column align-items-center">
+<main class="d-flex flex-column align-items-center gap-4">
     <h2>GRUPOS</h2>
     <a class="btn  btn-primary my-btn-primary btn-lg d-flex align-items-center gap-1" href="index.php?p=grupoForm&acao=add"> INSERIR <span class='material-icons' style="font-size:16px">add_circle</span> </a>
     <section class="d-flex w-100 gap-3 justify-content-center p-2">
         <?php
-            $groups = getGroups($con);
+            $groups = getGroups();
             foreach($groups as $group){
         ?>
         <article class="card w-10" style="width: 18rem;">

@@ -3,7 +3,7 @@
 include __DIR__."/../../db/grupoRepository.php";
 
 $key = isset($_GET['id']) ? $_GET['id'] : 0;
-$group = getGroup($con, $key); 
+$group = getGroup($key); 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : "add";
 
 if(count($group) > 0 || $acao == 'add'){
@@ -16,9 +16,9 @@ if(count($group) > 0 || $acao == 'add'){
             'nome' => $nome
         ];
 
-        if($acao=="add") insertGroup($con, $group);
+        if($acao=="add") insertGroup($group);
 
-        else updateGroup($con, $group);
+        else updateGroup($group);
         
         locationMsg('grupoList');
     }
@@ -49,7 +49,10 @@ if(count($group) > 0 || $acao == 'add'){
             <input type="text" name="nome" id="nome"  value="<?= $nome ?>" required>
         </div>
 
-        <button type="submit" class="btn btn-primary my-btn-primary btn-lg">SALVAR ALTERAÇÕES</button>
+        <div class="d-flex flex-row gap-3">
+            <a href="index.php?p=grupoList" class="btn my-btn-secondary btn-secondary bg-danger p-2">CANCELAR</a>
+            <button type="submit" class="btn btn-primary my-btn-primary btn-lg">SALVAR</button>
+        </div>
 
     </form>
 </main>

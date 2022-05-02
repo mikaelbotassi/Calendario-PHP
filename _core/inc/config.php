@@ -20,5 +20,5 @@ $CONFIG = [
         'grupoList' => 'groupsPages/grupoList.php',
         'grupoForm' => 'groupsPages/grupoForm.php',
         'delGroup' => 'groupsPages/delGroup.php'
-        ]
+    ]
 ];

@@ -77,6 +77,7 @@ main{
     transition: all 0.5s;
     padding: 0 !important;
     border: none !important;
+    justify-content: center !important;
 }
 
 .my-btn-secondary:hover{
@@ -175,7 +176,7 @@ main{
     align-items: center;
     padding: 24px;
     box-shadow: -2px 5px 17px 5px rgb(0 0 0 / 26%);
-    height: 10%;
+    height: 15%;
 }
 
 nav{
@@ -251,10 +252,9 @@ nav{
     height: 60%;
     padding: 16px;
     background-color: white;
-    display: flex;
-    gap: 16px;
-    align-items: center;
+    display: flex !important;
     justify-content: center;
+    gap: 8px;
 }
 
 .btn-default,
