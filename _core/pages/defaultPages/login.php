@@ -2,15 +2,16 @@
     $erroNome = "";
     $erroSenha = "";
 
-    if(count($_POST) > 0){
+    include_once __DIR__."/../../db/usuarioRepository.php";
 
-        $logins = loadLogins();
+    if(count($_POST) > 0){
 
         $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
+        $login = getUserByLogin($usuario);
 
-        if(isset($logins[$usuario])){
-            if($senha==$logins[$usuario]['senha']){
+        if(count($login) > 0){
+            if($senha==$login['senha']){
                 $_SESSION['logado'] = true;
                 $_SESSION['nome'] = $usuario;
                 header("Location: index.php");

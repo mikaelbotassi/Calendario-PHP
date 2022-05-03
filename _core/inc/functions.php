@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__."/config.php";
+include_once __DIR__."/../db/repository.php";
 
 function loadDates(){
     global $CONFIG;
@@ -36,44 +37,6 @@ function hasBday($dia, $mes, $datas){
     return "";
 }
 
-function loadLogins(){
-    global $CONFIG;
-    $arq = fopen($CONFIG['fileLoginsPath'], 'r+');
-
-    $logins = [];
-
-    while($row=fgetcsv($arq,1024,";")){
-        if($row[0] != "" && $row[1] != ""){
-            $logins += [
-                $row[0] => [
-                    'nome' => $row[2],
-                    'email' => $row[3],
-                    'senha' => $row[1],
-                ]
-            ];
-        }
-    }
-
-    fclose($arq);
-
-    return $logins;
-}
-
-function saveUsers($users){
-    global $CONFIG;
-
-    unlink($CONFIG['fileLoginsPath']);
-
-    $file = fopen($CONFIG['fileLoginsPath'], 'a+');
-
-    foreach($users as $login => $d){
-        $string = "{$login};{$d['senha']};{$d['nome']};{$d['email']}";
-        fwrite($file, $string.PHP_EOL);
-    } 
-
-    fclose($file);
-}
-
 function locationMsg($p, $msg="success"){
     echo '<script>
         location = "index.php?p='.$p.'&msg='.$msg.'";
@@ -106,3 +69,36 @@ function showToastr($msg){
         <?php }
     }
 }
+
+function getMaior($fields){
+    $maior = -9999;
+
+    foreach($fields as $field)
+        if($field['size'] > $maior) $maior = $field['size'];
+
+    return $maior;
+
+}
+
+function tableList($table, $fields, $search="1=1"){
+
+    $array = getList($table, $search);
+    
+    foreach($array as $element){ ?>
+
+        <article class="card card-usuario col-sm-<?=getMaior($fields)?>">
+                <div class="card-body card-usuario">
+                    <?php foreach($fields as $field){ ?>
+                        <h4 class="card-title"><?= strtoupper($element[$field['field']]) ?></h4>
+                    <?php } ?>
+                    <div id="button-group-usuario">
+                        <a href="index.php?p=<?=$_GET['p']?>&id=<?=$element['id']?>&acao=edit" class="btn btn-primary my-btn-primary w-25">EDITAR</a>
+                        <button onclick="if(confirm('Deseja realmente excluir o usuario?')){location='index.php?p=<?=$_GET['p']?>$acao=del&id=<?=$element['id']?>'}" class="btn btn-danger">EXCLUIR</button>
+                    </div>
+                </div>
+        </article>
+
+
+<?php }
+
+} ?>

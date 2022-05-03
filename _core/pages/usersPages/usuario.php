@@ -1,48 +1,74 @@
-<?php 
+<?php
 
-$logins = loadLogins(); 
-$key = isset($_GET['usuario']) ? $_GET['usuario'] : "";
+include_once __DIR__."/../../db/usuarioRepository.php";
+
+$key = isset($_GET['id']) ? $_GET['id'] : "";
+$user = getUserById($key);
 $acao = isset($_GET['acao']) ? $_GET['acao'] : "";
 
-if(isset($logins[$key]) || $acao == 'add'){
-   
+if($acao == 'del'){
+    
+    if(count(getUserByID($key)) <= 0){
+        locationMsg('usuarios', 'erro1');
+    }
+
+    deleteUserById($key);
+
+    echo "<p>Aguarde, excluindo...</p>";
+
+    locationMsg('usuarios');
+
+}
+
+if(count($user) > 0 || $acao == 'add'){
+
     if(count($_POST) > 0){
+        $login = isset($_POST['login']) ? $_POST['login'] : "";
         $nome = isset($_POST['nome']) ? $_POST['nome']: "";
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
-        $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : $key;
         
-        if($acao=="add"){
-            $logins+=[
-                $usuario =>[]
-            ];
-        }
-
-        $logins[$usuario]=[
+        $user = [
+            'id' => $key,
+            'login' => $login,
             'nome' => $nome,
             'email' => $email,
-            'senha' => $senha
+            'senha' => $senha,
+            'ativo' => 1
         ];
 
-        // $logins[$key]['senha'] = $senha;
+        if($acao=="add") insertUser($user);
 
-        saveUsers($logins);
+        else updateUser($user);
+
         locationMsg('usuarios');
     }
 
-    $nome = $email = $usuario = $senha = "";
+    $nome = $email = $login = $senha = "";
 
     if($acao=='edit'){
-        $nome = $logins[$key]['nome'];
-        $email = $logins[$key]['email'];
-        $usuario = $key;
-        $senha = $logins[$key]['senha'];
+        $id=$key;
+        $login = $user['login'];
+        $nome = $user['nome'];
+        $email = $user['email'];
+        $senha = $user['senha'];
     }
 
 
 ?>
 <main id="insert-user-page">
-    <form action="index.php?p=usuario&usuario=<?= $key ?>&acao=<?= $acao ?>" method="post" id="insert-user-form">
+    <form action="index.php?p=usuario&id=<?= $key ?>&acao=<?= $acao ?>" method="post" id="insert-user-form">
+
+    <?php if($acao == "edit"){?>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" name="id" id="id" disabled value="<?=$id?>">
+        </div>
+    <?php } ?>
+        <div>
+            <label for="login">Login</label>
+            <input type="text" name="login" id="usuario" <?= ($acao=='edit' ? "disabled" : "") ?> value="<?= $login ?>" placeholder="Digite seu nome de usuário..." required>
+        </div>
         <div>
             <label for="nome">Nome:</label>
             <input type="text" name="nome" placeholder="Digite seu nome..." value="<?= $nome ?>" required>
@@ -50,10 +76,6 @@ if(isset($logins[$key]) || $acao == 'add'){
         <div>
             <label for="email">E-mail:</label>
             <input type="email" name="email" id="email"  value="<?= $email ?>" placeholder="example@mail.com" required>
-        </div>
-        <div>
-            <label for="usuario">Usuário</label>
-            <input type="text" name="usuario" id="usuario" <?= ($acao=='edit' ? "disabled" : "") ?> value="<?= $usuario ?>" placeholder="Digite seu nome de usuário..." required>
         </div>
         <div>
             <label for="senha">Senha:</label>

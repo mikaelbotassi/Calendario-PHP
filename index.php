@@ -2,8 +2,8 @@
 
     define("PAGES_PATH", __DIR__."/_core/pages/");
 
-
     function showPage($page){
+
         global $CONFIG;
 
         $fp = isset($CONFIG['directories'][$page]) ? PAGES_PATH."{$CONFIG['directories'][$page]}" : PAGES_PATH."{$CONFIG['directories']['404']}";

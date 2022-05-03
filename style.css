@@ -235,6 +235,7 @@ nav{
 #cards-usuarios{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 48px;
     justify-content: center;
