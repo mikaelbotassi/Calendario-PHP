@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__."/conexao.php";
+include_once __DIR__."/repository.php";
 
 function getUsers(){
     $connection = connectDB();
@@ -19,19 +20,22 @@ function getUsers(){
 
 function getUserById($id){
     
-    $connection = connectDB();
+    // $connection = connectDB();
 
-    $id=(int)$id+0;
+    // $id=(int)$id+0;
 
-    $query = "SELECT * FROM USUARIO WHERE ID = {$id}";
+    // $query = "SELECT * FROM USUARIO WHERE ID = {$id}";
 
-    $row = [];
+    // $row = [];
 
-    $rs = mysqli_query($connection, $query);
+    // $rs = mysqli_query($connection, $query);
 
-    if($rs->num_rows > 0) $row = mysqli_fetch_assoc($rs);
+    // if($rs->num_rows > 0) $row = mysqli_fetch_assoc($rs);
 
-    return $row;
+    // return $row;
+
+    return getList('usuario', "id = {$id}");
+
 }
 
 function insertUser($user){

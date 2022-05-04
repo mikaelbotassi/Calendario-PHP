@@ -49,11 +49,6 @@ if(count($group) > 0 || $acao == 'add'){
             <input type="text" name="nome" id="nome"  value="<?= $nome ?>" required>
         </div>
 
-        <div class="d-flex flex-row gap-3">
-            <a href="index.php?p=grupoList" class="btn my-btn-secondary btn-secondary bg-danger p-2">CANCELAR</a>
-            <button type="submit" class="btn btn-primary my-btn-primary btn-lg">SALVAR</button>
-        </div>
-
     </form>
 </main>
 <?php }

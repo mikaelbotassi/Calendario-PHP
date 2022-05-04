@@ -12,7 +12,7 @@ if($acao == 'del'){
         locationMsg('usuarios', 'erro1');
     }
 
-    deleteUserById($key);
+    tableDel('usuario', $key);
 
     echo "<p>Aguarde, excluindo...</p>";
 
@@ -58,13 +58,7 @@ if(count($user) > 0 || $acao == 'add'){
 ?>
 <main id="insert-user-page">
     <form action="index.php?p=usuario&id=<?= $key ?>&acao=<?= $acao ?>" method="post" id="insert-user-form">
-
-    <?php if($acao == "edit"){?>
-        <div>
-            <label for="id">ID:</label>
-            <input type="text" name="id" id="id" disabled value="<?=$id?>">
-        </div>
-    <?php } ?>
+    
         <div>
             <label for="login">Login</label>
             <input type="text" name="login" id="usuario" <?= ($acao=='edit' ? "disabled" : "") ?> value="<?= $login ?>" placeholder="Digite seu nome de usuário..." required>

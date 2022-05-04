@@ -225,7 +225,8 @@ nav{
 
 /*________________________________ USUÁRIOS LIST _________________________________________________________*/
 
-#usuarios-page{
+#main-page{
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

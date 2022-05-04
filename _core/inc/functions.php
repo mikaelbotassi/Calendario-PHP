@@ -83,8 +83,11 @@ function getMaior($fields){
 function tableList($table, $fields, $search="1=1"){
 
     $array = getList($table, $search);
+
+    if(count($array) <= 0) echo "NENHUM REGISTRO ENCONTRADO";
     
-    foreach($array as $element){ ?>
+    else{
+        foreach($array as $element){ ?>
 
         <article class="card card-usuario col-sm-<?=getMaior($fields)?>">
                 <div class="card-body card-usuario">
@@ -92,13 +95,18 @@ function tableList($table, $fields, $search="1=1"){
                         <h4 class="card-title"><?= strtoupper($element[$field['field']]) ?></h4>
                     <?php } ?>
                     <div id="button-group-usuario">
-                        <a href="index.php?p=<?=$_GET['p']?>&id=<?=$element['id']?>&acao=edit" class="btn btn-primary my-btn-primary w-25">EDITAR</a>
-                        <button onclick="if(confirm('Deseja realmente excluir o usuario?')){location='index.php?p=<?=$_GET['p']?>$acao=del&id=<?=$element['id']?>'}" class="btn btn-danger">EXCLUIR</button>
+                        <a href="index.php?p=<?=$_GET['p']?>&id=<?=$element['id']?>&acao=edit" class="btn btn-primary my-btn-primary">EDITAR</a>
+                        <button onclick="if(confirm('Deseja realmente excluir o usuario?')){location='index.php?p=<?=$_GET['p']?>&acao=del&id=<?=$element['id']?>'}" class="btn btn-danger">EXCLUIR</button>
                     </div>
                 </div>
         </article>
 
 
-<?php }
+<?php   }
+    }
 
-} ?>
+}
+
+function tableDel($table, $id){
+    deleteElement($table, $id);
+}

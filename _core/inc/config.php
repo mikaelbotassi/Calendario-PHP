@@ -11,13 +11,12 @@ $CONFIG = [
     'arrayMonth' => ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
     'arrayWeek' => ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
     'directories' => [
-        'usuarios' => "usersPages/usuarios.php",
-        'usuario' => "usersPages/usuario.php",
+        'usuario' => "usersPages/UsuarioCRUD.php",
         'delUsuario' => "usersPages/delUsuario.php",
         '404' => "defaultPages/404.php",
         'home' => "defaultPages/home.php",
         "login" => "defaultPages/login.php",
-        'grupoList' => 'groupsPages/grupoList.php',
+        'grupo' => 'groupsPages/GrupoCRUD.php',
         'grupoForm' => 'groupsPages/grupoForm.php',
         'delGroup' => 'groupsPages/delGroup.php'
     ]
