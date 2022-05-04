@@ -1,10 +1,10 @@
 <?php
-  include __DIR__."/../../db/usuarioRepository.php";
+  include __DIR__."/../db/usuarioRepository.php";
   global $table;
   $title = 'USUARIOS';
   $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
-  $search = "1=1";
-  if($busca != "") $search = "NOME LIKE '%{$busca}%' OR EMAIL LIKE '%{$busca}%'";
+  $search = "ativo=1";
+  if($busca != "") $search = "NOME LIKE '%{$busca}%' OR EMAIL LIKE '%{$busca}%' AND ATIVO=1";
   $table = 'usuario';
   $fields = [
         [
@@ -69,5 +69,5 @@
         </div>
 
     <?php }
-    include_once __DIR__."/../../inc/CRUD.php";
+    include_once __DIR__."/../inc/CRUD.php";
     ?>

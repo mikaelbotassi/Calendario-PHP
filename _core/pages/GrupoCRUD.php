@@ -1,5 +1,5 @@
 <?php
-  include __DIR__."/../../db/grupoRepository.php";
+  include __DIR__."/../db/grupoRepository.php";
   global $table;
   $title = 'GRUPOS';
   $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
@@ -41,5 +41,5 @@
         </div>
 
     <?php }
-    include_once __DIR__."/../../inc/CRUD.php";
+    include_once __DIR__."/../inc/CRUD.php";
     ?>
