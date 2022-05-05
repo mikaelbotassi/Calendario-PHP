@@ -11,10 +11,12 @@ $CONFIG = [
     'arrayMonth' => ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
     'arrayWeek' => ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
     'directories' => [
-        'usuario' => "UsuarioCRUD.php",
         '404' => "defaultPages/404.php",
         'home' => "defaultPages/home.php",
         "login" => "defaultPages/login.php",
+        'usuario' => "UsuarioCRUD.php",
         'grupo' => 'GrupoCRUD.php',
+        'categoria' => 'CategoriaCRUD.php',
+        'publicacao' => 'PublicacaoCRUD.php'
     ]
 ];

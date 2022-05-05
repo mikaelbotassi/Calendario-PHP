@@ -91,7 +91,10 @@ function tableList($table, $fields, $search="1=1"){
 
         <article class="card card-usuario col-sm-<?=getMaior($fields)?>">
                 <div class="card-body card-usuario">
-                    <?php foreach($fields as $field){ ?>
+                    <?php foreach($fields as $field){
+                        if($field['field'] == 'data')
+                            $element[$field['field']] = convertDate($element[$field['field']], "d-m-Y");
+                        ?>
                         <h4 class="card-title"><?= strtoupper($element[$field['field']]) ?></h4>
                     <?php } ?>
                     <div id="button-group-usuario">
@@ -109,4 +112,9 @@ function tableList($table, $fields, $search="1=1"){
 
 function tableDel($table, $id){
     deleteElement($table, $id);
+}
+
+function convertDate($data, $format){
+    $data = new DateTime($data);
+    return $data->format($format);
 }

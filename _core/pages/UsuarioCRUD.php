@@ -1,5 +1,4 @@
 <?php
-  include __DIR__."/../db/usuarioRepository.php";
   global $table;
   $title = 'USUARIOS';
   $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
@@ -31,18 +30,18 @@
         $email = isset($_POST['email']) ? $_POST['email'] : "";
         $senha = isset($_POST['senha']) ? $_POST['senha'] : "";
         $user = [
-                'login' => $login,
-                'nome' => $nome,
-                'email' => $email,
-                'senha' => $senha
+            'login' => $login,
+            'nome' => $nome,
+            'email' => $email,
+            'senha' => $senha,
+            'ativo' => 1
         ];
-
         if($acao == 'add'){
             insertElement($table, $user);
             locationMsg($_GET['p']);
             return true;
         }
-       
+        unset($user['login']);
         updateElement($table, $user, $id);
         locationMsg($_GET['p']);
         return false;

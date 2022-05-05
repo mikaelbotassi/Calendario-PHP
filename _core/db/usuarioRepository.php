@@ -19,22 +19,8 @@ function getUsers(){
 }
 
 function getUserById($id){
-    
-    // $connection = connectDB();
 
-    // $id=(int)$id+0;
-
-    // $query = "SELECT * FROM USUARIO WHERE ID = {$id}";
-
-    // $row = [];
-
-    // $rs = mysqli_query($connection, $query);
-
-    // if($rs->num_rows > 0) $row = mysqli_fetch_assoc($rs);
-
-    // return $row;
-
-    return getList('usuario', "id = {$id}");
+    return getList('usuario', "id = {$id} AND ATIVO=1");
 
 }
 

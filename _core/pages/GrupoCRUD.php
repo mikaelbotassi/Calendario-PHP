@@ -1,5 +1,4 @@
 <?php
-  include __DIR__."/../db/grupoRepository.php";
   global $table;
   $title = 'GRUPOS';
   $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
