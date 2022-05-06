@@ -36,7 +36,7 @@
 
         <div>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome"  value="<?= isset($dados['nome']) ? $dados['nome'] : '' ?>" required>
+            <input type="text" class="form-control" name="nome" id="nome"  value="<?= isset($dados['nome']) ? $dados['nome'] : '' ?>" required>
         </div>
 
     <?php }

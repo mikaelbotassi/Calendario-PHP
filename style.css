@@ -48,6 +48,7 @@ main{
 .my-btn-primary{
     display: flex !important;
     padding: 8px !important;
+    justify-content: center;
     gap: 8px;
     align-items: center;
     transition: all 0.5s;
@@ -89,6 +90,11 @@ main{
 .my-btn-secondary:focus{
     box-shadow: none !important;
 }
+
+.form-control:focus{
+    box-shadow: 0px 0px 0px 4px #5b5b5b82!important;
+}
+
 /*__________________________________________ LOGIN PAGE _______________________________________________________*/
 
 #login{
@@ -322,6 +328,32 @@ main#group-list{
     align-items: center;
     justify-content: center;
     gap: 64px;
+}
+
+/*________________________________________ SEARCH BAR ____________________________________________*/
+
+#search-bar{
+    border: 1px solid var(--dark);
+    border-radius: 40px;
+}
+
+#search-bar > div:nth-child(1){
+    width: 95%;
+}
+
+#search-bar > div:nth-child(2){
+    width: 5%;
+}
+
+#search-bar input{
+    height: 100%;
+    border-radius: 40px;
+    border: none;
+    box-shadow: none !important;
+}
+
+#search-bar button[type=submit]{
+    border-radius: 40px;
 }
 
 /*_______________________________________ TOASTR _________________________________________________*/

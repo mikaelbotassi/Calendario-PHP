@@ -1,23 +1,8 @@
 <?php
 
     $year = isset($_REQUEST["year"]) ? $_REQUEST["year"] : date('Y');
-    $datas = loadDates();
     $acao = isset($_GET['acao']) ? $_GET['acao'] : '';
-    if(count($_POST) > 0 && $acao == 'grava'){
-        $nome = str_pad($_POST['nome'],  2, "0", STR_PAD_LEFT);
-        $dia = str_pad($_POST['dia'],  2, "0", STR_PAD_LEFT);;
-        $mes = str_pad($_POST['mes'],  2, "0", STR_PAD_LEFT);;
-
-        $data = [
-            'data' => $dia.$mes,
-            'nome' => $nome,
-        ];
-
-        saveDates($data);
-
-        $datas[] = $data;
-
-    }
+    $events = getList('evento', "YEAR(data)={$year}");
 ?>
 
     <main id="home">
@@ -32,9 +17,9 @@
         
         echo "<h1>Bem vindo {$_SESSION['nome']}</h1><a href='index.php?p=logof'></a>";
         echo '<h2>'."Calendário de {$year}".'</h2>';
-        for ($i = 0; $i < 12 ; $i++) {
-            echo '<h3>'.$CONFIG['arrayMonth'][$i].'</h3>';
-            $firstDayMonth = mktime(0,0,0,$i + 1,1,$year);
+        for ($month = 0; $month < 12 ; $month++) {
+            echo '<h3>'.$CONFIG['arrayMonth'][$month].'</h3>';
+            $firstDayMonth = mktime(0,0,0,$month + 1,1,$year);
             $lastDayMonth = date('t', $firstDayMonth);
             $startWeekDay = date('w', $firstDayMonth);
             $x = 0;
@@ -45,17 +30,17 @@
             </thead>
             <tbody>
             <tr>';
-        for ($cont=0; $cont < $startWeekDay; $cont++) {
+        for ($day=0; $day < $startWeekDay; $day++) {
             echo '<td>&nbsp;</td>'.PHP_EOL;
             $x++;
         }
-            for ($cont = 1; $cont <= $lastDayMonth; $cont++) {
+            for ($day = 1; $day <= $lastDayMonth; $day++) {
                 if ($x++ == 7) {
                     $x = 1;
                     echo '</tr><tr>'.PHP_EOL;
                 }
-                $nome = hasBday($cont, $i+1, $datas);
-                echo  $nome!= "" ? '<td class="bg-danger"> <a href="#" data-toggle="tooltip" title="'.$nome.'">'.$cont.'</a></td>'.PHP_EOL : '<td>'.$cont.'</td>'.PHP_EOL;
+                $nome = hasEvent($day, $month + 1,$year ,$events);
+                echo  $nome!= "" ? '<td class="bg-danger"> <a href="#" data-toggle="tooltip" title="'.$nome.'">'.$day.'</a></td>'.PHP_EOL : '<td>'.$day.'</td>'.PHP_EOL;
             };
         echo '
             </tr>
@@ -66,7 +51,7 @@
             <!-- Modal -->
         <div class="modal fade" id="insertDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
-                <form class="modal-content" method="post" action="index.php?acao=grava">
+                <form class="modal-dayent" method="post" action="index.php?acao=grava">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Adicionar Data</h4>
                     </div>
@@ -74,15 +59,15 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <label for="nome">Nome:</label>
-                                <input type="text" name="nome" class="form-control" placeholder="Seu nome..." required/>
+                                <input type="text" name="nome" class="form-dayrol" placeholder="Seu nome..." required/>
                             </div>
                             <div class="col-sm-4">
                                 <label for="dia">Dia:</label>
-                                <input type="Number" name="dia" class="form-control" placeholder="Dia do seu aniversário..." max="31" min="1" required/>
+                                <input type="Number" name="dia" class="form-dayrol" placeholder="Dia do seu aniversário..." max="31" min="1" required/>
                             </div>
                             <div class="col-sm-4">
                                 <label for="mes">Mês:</label>
-                                <input type="Number" name="mes"  class="form-control" placeholder="Mês do seu aniversário..." max="12" min="1" required/>
+                                <input type="Number" name="mes"  class="form-dayrol" placeholder="Mês do seu aniversário..." max="12" min="1" required/>
                             </div>
                         </div>
                     </div>

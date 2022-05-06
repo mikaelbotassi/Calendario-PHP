@@ -2,38 +2,13 @@
 include_once __DIR__."/config.php";
 include_once __DIR__."/../db/repository.php";
 
-function loadDates(){
-    global $CONFIG;
-    $arq = fopen($CONFIG['fileDatesPath'], 'r+');
-
-    $dates=[];
-
-    while($row=fgetcsv($arq,1024,";")){
-        if($row[0] != "" && $row[1] != ""){
-            $dates[] = [
-                'data' => $row[0],
-                'nome' => $row[1],
-            ];
-        }
-    }
-    fclose($arq);
-    return $dates;
-}
-
-function saveDates($data){
-    global $CONFIG;
-    $arq = fopen($CONFIG['fileDatesPath'], 'a+');
-
-    fputcsv($arq, $data, ";");
-
-    fclose($arq);
-}
-
-function hasBday($dia, $mes, $datas){
+function hasEvent($dia,$mes,$ano, $events){
     $dia = str_pad($dia, 2, "0", STR_PAD_LEFT);
     $mes = str_pad($mes, 2, "0", STR_PAD_LEFT);
-    foreach($datas as $data)
-        if($data['data'] == $dia.$mes) return $data['nome'];
+    $data = $ano.'-'.$mes.'-'.$dia;
+
+    foreach($events as $event)
+        if($event['data'] == $data) return $event['descricao'];
     return "";
 }
 
@@ -110,7 +85,16 @@ function tableList($table, $fields, $search="1=1"){
 
 }
 
-function tableDel($table, $id){
+function deleteImg($table,$id,$field){
+    global $CONFIG;
+    $img=getList($table, "ID={$id} AND {$field} <>''");
+    if(count($img) > 0){
+        unlink($CONFIG['rootPath']."uploads/publicacao/{$img[0][$field]}");
+    }
+}
+
+function tableDel($table, $id, $field=""){
+    if($field != '') deleteImg($table,$id,$field);
     deleteElement($table, $id);
 }
 

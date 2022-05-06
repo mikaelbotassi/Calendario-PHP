@@ -4,6 +4,7 @@ session_start();
 
 $CONFIG = [
     'title' => "Calendário",
+    'rootPath' => __DIR__."/../../",
     'fileDatesPath' => __DIR__."/../db/datas.txt",
     'fileLoginsPath' => __DIR__."/../db/logins.txt",
     'fileGroupsPath' => __DIR__."/../db/grupos.txt",
@@ -13,6 +14,7 @@ $CONFIG = [
     'directories' => [
         '404' => "defaultPages/404.php",
         'home' => "defaultPages/home.php",
+        'evento' => "EventoCRUD.php",
         "login" => "defaultPages/login.php",
         'usuario' => "UsuarioCRUD.php",
         'grupo' => 'GrupoCRUD.php',

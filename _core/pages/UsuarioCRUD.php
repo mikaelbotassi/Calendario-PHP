@@ -52,19 +52,19 @@
 
         <div>
             <label for="login">Login</label>
-            <input type="text" name="login" id="usuario" <?= (isset($dados['login']) ? "disabled" : "") ?> value="<?= isset($dados['login']) ? $dados['login'] : '' ?>" placeholder="Digite seu nome de usuário..." required>
+            <input type="text" name="login" id="usuario" <?= (isset($dados['login']) ? "disabled" : "") ?> value="<?= isset($dados['login']) ? $dados['login'] : '' ?>" placeholder="Digite seu nome de usuário..." class="form-control" required>
         </div>
         <div>
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" placeholder="Digite seu nome..." value="<?= isset($dados['nome']) ? $dados['nome'] : '' ?>" required>
+            <input type="text" name="nome" placeholder="Digite seu nome..." class="form-control" value="<?= isset($dados['nome']) ? $dados['nome'] : '' ?>" required>
         </div>
         <div>
             <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email"  value="<?= isset($dados['email']) ? $dados['email'] : '' ?>" placeholder="example@mail.com" required>
+            <input type="email" name="email" id="email"  value="<?= isset($dados['email']) ? $dados['email'] : '' ?>" placeholder="example@mail.com" class="form-control" required>
         </div>
         <div>
             <label for="senha">Senha:</label>
-            <input type="text" name="senha" id="senha" value="<?= isset($dados['senha']) ? $dados['senha'] : '' ?>" placeholder="Digite sua senha..." required>
+            <input type="text" name="senha" id="senha" value="<?= isset($dados['senha']) ? $dados['senha'] : '' ?>" placeholder="Digite sua senha..." class="form-control" required>
         </div>
 
     <?php }
