@@ -11,8 +11,6 @@
         echo '<a href="./index.php?year='.($year + 1).'" class="btn btn-secondary my-btn-secondary btn-lg">'.($year + 1).' <span class="material-icons">arrow_right</span> </a></div>';
         
         ?>
-            
-        <button type="button" class="btn btn-primary my-btn-primary" data-bs-toggle="modal" data-bs-target="#insertDataModal"> CADASTRAR EVENTO <span class='material-icons'>add_circle</span> </button>
         <?php
         
         echo "<h1>Bem vindo {$_SESSION['nome']}</h1><a href='index.php?p=logof'></a>";
@@ -48,36 +46,6 @@
         </table>';
         }
         ?>
-            <!-- Modal -->
-        <div class="modal fade" id="insertDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <form class="modal-dayent" method="post" action="index.php?acao=grava">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Adicionar Data</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <label for="nome">Nome:</label>
-                                <input type="text" name="nome" class="form-dayrol" placeholder="Seu nome..." required/>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="dia">Dia:</label>
-                                <input type="Number" name="dia" class="form-dayrol" placeholder="Dia do seu aniversário..." max="31" min="1" required/>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="mes">Mês:</label>
-                                <input type="Number" name="mes"  class="form-dayrol" placeholder="Mês do seu aniversário..." max="12" min="1" required/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="Submit" class="btn btn-primary my-btn-primary btn-success">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <script>
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()

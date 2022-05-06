@@ -11,6 +11,7 @@
             if(count($dados) <= 0) locationMsg('usuario', 'erro1');
         }
         if(count($_POST) > 0){
+            // saveForm($acao, $key);
             if(saveForm($acao, $key)) locationMsg($_GET['p']);
             else locationMsg($_GET['p'], 'erro1');
         }

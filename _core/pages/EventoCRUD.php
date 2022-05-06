@@ -42,7 +42,7 @@
 
         <div>
             <label for="nome">Descrição:</label>
-            <textarea type="text" name="descricao" placeholder="Digite a descrição do evento..." class="form-control" required><?=isset($dados['descricao']) ? $dados['descricao'] : '' ?></textarea>
+            <textarea type="text" name="descricao" id="texto" placeholder="Digite a descrição do evento..." class="form-control" required><?=isset($dados['descricao']) ? $dados['descricao'] : '' ?></textarea>
         </div>
         <div>
             <label for="data">Data:</label>

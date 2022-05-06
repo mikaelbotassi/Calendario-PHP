@@ -89,7 +89,7 @@ function deleteImg($table,$id,$field){
     global $CONFIG;
     $img=getList($table, "ID={$id} AND {$field} <>''");
     if(count($img) > 0){
-        unlink($CONFIG['rootPath']."uploads/publicacao/{$img[0][$field]}");
+        unlink($CONFIG['rootPath']."uploads/{$table}/{$img[0][$field]}");
     }
 }
 

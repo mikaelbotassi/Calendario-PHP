@@ -14,6 +14,7 @@ $CONFIG = [
     'directories' => [
         '404' => "defaultPages/404.php",
         'home' => "defaultPages/home.php",
+        'servico' => "ServicoCRUD.php",
         'evento' => "EventoCRUD.php",
         "login" => "defaultPages/login.php",
         'usuario' => "UsuarioCRUD.php",

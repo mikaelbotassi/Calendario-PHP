@@ -2,8 +2,8 @@
     <a href="index.php?p=home"><img src="https://www.flexpoint.com.br/img/brand.png" alt="Logo FlexPoint"></a>
     <nav>
         <ul id="header-list">
-            <li><a href="index.php?p=home">Home</a></li>
             <li><a href="index.php?p=home">Calendário</a></li>
+            <li><a href="index.php?p=servico">Serviços</a></li>
             <li><a href="index.php?p=evento">Eventos</a></li>
             <li><a href="index.php?p=publicacao">Publicações</a></li>
             <li><a href="index.php?p=usuario">Usuários</a></li>

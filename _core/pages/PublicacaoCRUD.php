@@ -1,5 +1,5 @@
 <?php 
-global $table, $CONFIG;
+global $table, $CONFIG, $imgField;
 $title = 'PUBLICAÇÕES';
 $imgField = 'img';
 $busca = isset($_GET['busca']) ? $_GET['busca'] : "";
@@ -25,7 +25,7 @@ $fields = [
 ];
 
     function saveForm($acao, $id){
-        global $table, $CONFIG;
+        global $table, $CONFIG, $imgField;
         $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : "";
         $subtitulo = isset($_POST['subtitulo']) ? $_POST['subtitulo']: "";
         $data = isset($_POST['data']) ? $_POST['data'] : "";
@@ -37,7 +37,7 @@ $fields = [
             $nmImg = md5(time())."_".$_FILES['img']['name'];
             if(!move_uploaded_file($_FILES['img']['tmp_name'], $CONFIG['rootPath']."uploads/publicacao/{$nmImg}"))
                 $nmImg = "";
-            else if($id > 0) deleteImg($table, $id, 'img');
+            else if($id > 0) deleteImg($table, $id, $imgField);
         }
         $pub = [
                 'titulo' => $titulo,
